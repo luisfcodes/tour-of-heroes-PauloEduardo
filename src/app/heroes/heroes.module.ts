@@ -5,6 +5,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 import { HeroesRoutingModule } from './heroes-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeroesRoutingModule } from './heroes-routing.module';
     CommonModule,
     MaterialModule,
     HeroesRoutingModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ]
 })
 export class HeroesModule { }
