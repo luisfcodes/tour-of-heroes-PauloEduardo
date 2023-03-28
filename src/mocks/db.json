@@ -2,11 +2,11 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Wolwerine               "
+      "name": "Wolwerine"
     },
     {
       "id": 2,
-      "name": "Homem Aranhas"
+      "name": "Homem Aranha"
     },
     {
       "id": 3,
@@ -43,6 +43,10 @@
     {
       "name": "Sova",
       "id": 11
+    },
+    {
+      "name": "KillJoy",
+      "id": 12
     }
   ]
 }
