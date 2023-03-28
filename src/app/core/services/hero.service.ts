@@ -16,16 +16,32 @@ export class HeroService {
     private httpClient: HttpClient
   ) {}
 
-  getHeroes(): Observable<Hero[]>{
+  getAll(): Observable<Hero[]>{
     return this.httpClient.get<Hero[]>(this.heroesUrl).pipe(
       tap((heroes) => this.log(`fetched ${heroes.length} heroes`))
     )
   }
 
-  getHero(id: number): Observable<Hero>{
+  getOne(id: number): Observable<Hero>{
     return this.httpClient.get<Hero>(`${this.heroesUrl}/${id}`).pipe(
-      tap((hero) => this.log(`fetched hero: ${id} - ${hero.name}`))
+      tap((hero) => this.log(`fetched ${this.descAttributes(hero)}`))
     )
+  }
+
+  create(hero: Hero): Observable<Hero>{
+    return this.httpClient.post<Hero>(this.heroesUrl, hero).pipe(
+      tap((hero) => this.log(`created ${this.descAttributes(hero)}`))
+    )
+  }
+
+  update(hero: Hero): Observable<Hero>{
+    return this.httpClient.put<Hero>(`${this.heroesUrl}/${hero.id}`, hero).pipe(
+      tap((hero) => this.log(`updated ${this.descAttributes(hero)}`))
+    )
+  }
+
+  private descAttributes(hero: Hero): string {
+    return `hero id: ${hero.id} - name: ${hero.name}`
   }
 
   private log(message: string): void {
