@@ -28,6 +28,20 @@ export class HeroService {
     )
   }
 
+  search(term: string): Observable<Hero[]> {
+    if(!term.trim()) {
+      return of([])
+    }
+
+    return this.httpClient.get<Hero[]>(`${this.heroesUrl}?name=${term}`).pipe(
+      tap((heroes) =>
+        heroes.length
+          ? this.log(`found ${heroes.length} hero(es) matching "${term}"`)
+          : this.log(`no found matching "${term}"`)
+      )
+    )
+  }
+
   create(hero: Hero): Observable<Hero>{
     return this.httpClient.post<Hero>(this.heroesUrl, hero).pipe(
       tap((hero) => this.log(`created ${this.descAttributes(hero)}`))

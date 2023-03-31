@@ -1,7 +1,11 @@
 <h1>Dashboard</h1>
 
-<div fxLayout fxLayout.xs="column" fxLayoutGap="12px" fxLayoutAlign="space-between">
-  <mat-card class="pointer" [routerLink]="['/heroes', hero.id]" *ngFor="let hero of heroes">
-    <mat-card-title>{{ hero.name }}</mat-card-title>
-  </mat-card>
+<div fxLayout="column" fxLayoutGap="1.5rem">
+  <div fxLayout fxLayout.xs="column" fxLayoutGap="12px" fxLayoutAlign="space-between">
+    <mat-card class="pointer" [routerLink]="['/heroes', hero.id]" *ngFor="let hero of heroes">
+      <mat-card-title>{{ hero.name }}</mat-card-title>
+    </mat-card>
+  </div>
+
+  <app-hero-search [label]="'Hero Search'" (selected)="onSelected($event)"></app-hero-search>
 </div>
